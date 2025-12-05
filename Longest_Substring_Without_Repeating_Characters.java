@@ -1,3 +1,8 @@
+/*
+    1. Take a HashMap - Store the character as key and index as Value
+    2. If Map already has the current caracter set the left to Value of current caracter key
+*/
+
 import java.util.HashMap;
 
 public class Longest_Substring_Without_Repeating_Characters {
