@@ -10,7 +10,7 @@
     7. After reducing frequency again check the changes and if changes < k loop completed
     8. Move right
     
-    TC - O(N)
+    TC - O(2N)
     SC - O(26)
 */
 
