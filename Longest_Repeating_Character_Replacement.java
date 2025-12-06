@@ -1,4 +1,47 @@
 /*
+    Optimal Solution -
+
+    Approach - In better solution we were updating the max frequency every time changes > k
+            But we need not to calculate the max frequency as we already have a max length 
+            If were subtracting the maxfrequency we will not going to get the maxlen more than current
+            That's why no need to calculate the max frequency
+
+            We also can remove the inner while loop by moving left only by one place foward we keep maintaining the 
+            window
+
+    1. Maintian a Hash Array 
+    2. If (right - left + 1 - maxfr) > k : hashArr[s.charAt(l)-'A']--; l++;
+    3. If (right - left + 1 - maxfr) <= k : maxlen updated;
+*/
+
+public class Longest_Repeating_Character_Replacement {
+    public static int characterReplacement(String s, int k) {
+        int[] hashArr = new int[26];
+        int maxfr = 0;
+        int l = 0;
+        int r = 0;
+        int maxlen = 0;
+        while(r < s.length()){
+            hashArr[s.charAt(r)-'A']++;
+            maxfr = Math.max(maxfr, hashArr[s.charAt(r) - 'A']);
+            if((r-l+1)-maxfr > k){
+                hashArr[s.charAt(l)-'A']--;
+                l++;
+            }
+            if(r-l+1 - maxfr <= k){
+                maxlen = Math.max(maxlen, r-l+1);
+            }
+            r++;
+        }
+        return maxlen;
+    }
+    public static void main(String[] args) {
+        String s = "AABABBA";
+        System.out.println(characterReplacement(s, 1));
+    }
+}
+
+/*
     Better Solution -
 
     1. We will iterate Once
@@ -12,9 +55,6 @@
     
     TC - O(2N) * 26
     SC - O(26)
-*/
-
-import java.util.HashMap;
 
 public class Longest_Repeating_Character_Replacement {
     public static int characterReplacement(String s, int k) {
@@ -46,6 +86,8 @@ public class Longest_Repeating_Character_Replacement {
         System.out.println(characterReplacement(s, 2));
     }
 }
+*/
+
 /*
     Brute Force Solution -
 
