@@ -8,13 +8,13 @@
 
 public class Binary_Subarrays_With_Sum_Equals_Goal {
 
-    public static int findSubarrays(int[] arr, int goal){
+    public static int findSubarrays(int[] arr, int goal){ //O(2N)
         if(goal < 0) return 0; //if goal given 0 then goal will become -1 that is why we are writing this condition
         int l = 0, r = 0;
         int count = 0, sum = 0;
-        while(r < arr.length){
+        while(r < arr.length){ //O(N)
             sum += arr[r];
-            while(sum > goal){
+            while(sum > goal){ //O(N)
                 sum = sum - arr[l];
                 l++;
             }
@@ -23,6 +23,8 @@ public class Binary_Subarrays_With_Sum_Equals_Goal {
         }
         return count;
     }
+
+    //TC - O(2N)*2 SC - O(1)
 
     public static int numSubarraysWithSum(int[] arr, int goal){
         int subarrays_less_than_equal_to_goal = findSubarrays(arr, goal);
